@@ -16,22 +16,31 @@
  *  
  */
 
-//V2 App::uses('Component', 'Controller');
-//V2 App::uses('Router', 'Routing');
-//V2 App::uses('Security', 'Utility');
-//V2 App::uses('Hash', 'Utility');
-//V2 App::uses('AuthComponent', 'Controller');
-
-App::import('Core', 'Security');
-App::import('Component', 'Auth');
+//V2
+/*
+App::uses('Component', 'Controller');
+App::uses('Router', 'Routing');
+App::uses('Security', 'Utility');
+App::uses('Hash', 'Utility');
+App::uses('AuthComponent', 'Controller');
 
 App::import('Vendor', 'oauth2-php/lib/OAuth2');
 App::import('Vendor', 'oauth2-php/lib/IOAuth2Storage');
 App::import('Vendor', 'oauth2-php/lib/IOAuth2RefreshTokens');
 App::import('Vendor', 'oauth2-php/lib/IOAuth2GrantUser');
 App::import('Vendor', 'oauth2-php/lib/IOAuth2GrantCode');
+*/
 
-class OAuthComponent extends Object implements IOAuth2Storage, IOAuth2RefreshTokens, IOAuth2GrantUser, IOAuth2GrantCode {
+App::import('Core', 'Security');
+App::import('Component', 'Auth');
+
+App::import('Vendor', 'OAuth2', array('file' => 'oauth2-php'.DS.'lib'.DS.'OAuth2.php'));
+App::import('Vendor', 'IOAuth2Storage', array('file' => 'oauth2-php'.DS.'lib'.DS.'IOAuth2Storage.php'));
+App::import('Vendor', 'IOAuth2RefreshTokens', array('file' => 'oauth2-php'.DS.'lib'.DS.'IOAuth2RefreshTokens.php'));
+App::import('Vendor', 'IOAuth2GrantUser', array('file' => 'oauth2-php'.DS.'lib'.DS.'IOAuth2GrantUser.php'));
+App::import('Vendor', 'IOAuth2GrantCode', array('file' => 'oauth2-php'.DS.'lib'.DS.'IOAuth2GrantCode.php'));
+
+class OAuthComponent extends Component implements IOAuth2Storage, IOAuth2RefreshTokens, IOAuth2GrantUser, IOAuth2GrantCode {
 	
 /**
  * AccessToken object.
