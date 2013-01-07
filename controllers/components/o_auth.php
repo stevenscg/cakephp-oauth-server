@@ -40,7 +40,7 @@ App::import('Vendor', 'IOAuth2RefreshTokens', array('file' => 'oauth2-php'.DS.'l
 App::import('Vendor', 'IOAuth2GrantUser', array('file' => 'oauth2-php'.DS.'lib'.DS.'IOAuth2GrantUser.php'));
 App::import('Vendor', 'IOAuth2GrantCode', array('file' => 'oauth2-php'.DS.'lib'.DS.'IOAuth2GrantCode.php'));
 
-class OAuthComponent extends Component implements IOAuth2Storage, IOAuth2RefreshTokens, IOAuth2GrantUser, IOAuth2GrantCode {
+class OAuthComponent extends Object implements IOAuth2Storage, IOAuth2RefreshTokens, IOAuth2GrantUser, IOAuth2GrantCode {
 	
 /**
  * AccessToken object.
@@ -152,8 +152,7 @@ class OAuthComponent extends Component implements IOAuth2Storage, IOAuth2Refresh
  * 
  * @see OAuth2::__construct().
  */
-	public function __construct(ComponentCollection $collection, $settings = array()){
-		parent::__construct($collection, $settings);
+	public function __construct() {
 		$this->OAuth2 = new OAuth2($this);
 		$this->AccessToken = ClassRegistry::init(array('class' => 'OAuth.AccessToken', 'alias' => 'AccessToken'));
 		$this->AuthCode = ClassRegistry::init(array('class' => 'OAuth.AuthCode', 'alias' => 'AuthCode'));
@@ -167,7 +166,7 @@ class OAuthComponent extends Component implements IOAuth2Storage, IOAuth2Refresh
  * @param Controller $controller A reference to the instantiating controller object
  * @return void
  */
-	public function initialize(Controller $controller) {
+	public function initialize(&$controller, $settings = array()) {
 		$this->request = $controller->request;
 		$this->response = $controller->response;
 		$this->_methods = $controller->methods;
