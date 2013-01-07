@@ -9,7 +9,7 @@
  *  
  */
 
-App::uses('OAuthAppController', 'OAuth.Controller');
+//V2 App::uses('OAuthAppController', 'OAuth.Controller');
 
 /**
  * Clients Controller
