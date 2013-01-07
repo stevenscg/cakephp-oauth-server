@@ -1,8 +1,11 @@
 <?php
 
+// V2
+/*
 App::uses('OAuthAppModel', 'OAuth.Model');
 App::uses('String', 'Utility');
 App::uses('Security', 'Utility');
+*/
 
 /**
  * Client Model

@@ -1,5 +1,5 @@
 <?php
-App::uses('OAuthAppModel', 'OAuth.Model');
+//V2 App::uses('OAuthAppModel', 'OAuth.Model');
 /**
  * AccessToken Model
  *
